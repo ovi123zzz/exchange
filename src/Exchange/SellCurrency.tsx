@@ -1,6 +1,4 @@
-import React from 'react'
-
-export const SellCurrency = ({currencyName}) => {
+export const SellCurrency: React.FC<{currencyName: string}> = ({currencyName}) => {
   return (
     <div>
       Sell {currencyName}

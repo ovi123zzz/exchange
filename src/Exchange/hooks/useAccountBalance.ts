@@ -14,19 +14,10 @@ interface Balance {
 }
 interface HookResult {
   updateSellBalance: (currencyToUpdate: string, value: string, action: string) => void
-  getCurrentBalance: (selectedValue: string) => void
   balanceValue(value: string | undefined | number): string
 }
 export const useAccountBalance = ():HookResult => {
   const [balance, setBalance] = useState<Balance[] | undefined>(defaultBalance)
-  const [currentBalance, setCurrentBalance ] = useState<number>(0)
-  const getCurrentBalance = (selectedValue: string) => {
-    balance?.forEach(el => {
-      if (el.type === selectedValue) {
-        setCurrentBalance(el.value)
-      }
-    })
-  }
 
   const updateSellBalance = (currencyToUpdate: string, value: string, action: string) => {
     for (let i in balance) {
@@ -49,5 +40,5 @@ export const useAccountBalance = ():HookResult => {
    
   
 
-  return { updateSellBalance, getCurrentBalance, balanceValue}
+  return { updateSellBalance, balanceValue}
 }
